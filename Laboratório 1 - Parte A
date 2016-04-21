@@ -1,0 +1,30 @@
+#Laboratório 1 - Parte A - Assembly Mips
+Pasta destinda a primeira parte do laboratório de Oac.
+Assemebly Mips
+  Objetivos:
+ Familiarizar o aluno com o Simulador/Montador MARS;
+ Desenvolver a capacidade de codificação de algoritmos em linguagem Assembly MIPS;
+ Desenvolver a capacidade de análise de desempenho de algoritmos em Assembly;
+(2.0) 1) Simulador/Montador MARS
+Instale em sua máquina o simulador/montador MARS v.4.5 Custom 4 disponível no Moodle.
+(0.0)1.1) Dado o programa sort.s e o vetor: V[10]={5,8,3,4,7,6,8,0,1,9}, ordená-lo em ordem crescente e contar o número de instruções (por tipo e por estatística) exigido pelo algoritmo. Qual o tamanho em bytes do código executável?
+(0.0)1.2) Explique o que é o valor 589834 armazenado a partir do endereço 0x10010028. O emulador trabalha no formato Little Endian ou Big Endian?
+(2.0)1.3) Considerando a execução em um processador MIPS com frequência de clock de 50MHz, que necessita 1 ciclo de clock para a execução de cada instrução (CPI=1).
+(1.0) a) Calcule o tempo de execução necessário para o programa e dados do item 1.1).
+(1.0) b) Para os vetores de entrada de n elementos já ordenados {1,2,3,4...n} e ordenados inversamente {n, n-1, n-2,...,2,1}, meça a o número de instruções necessário a execução para n={1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100} e plote esses dados em um mesmo gráfico n x I ;
+(3.0) 2) Compilador GCC
+Instale na sua máquina o cross compiler MIPS GCC disponível no Moodle.
+Forma de utilização: mips-sde-elf-gcc –S teste.c #diretiva –S para gerar o arquivo Assembly teste.s
+Inicialmente, teste com programas triviais em C para entender a convenção utilizada para a geração do código Assembly.
+(1.0)2.1) Dado o programa sort.c, compile-o e comente o código em Assembly obtido indicando a função de cada uma das diretivas do montador usadas no código Assembly (.file .section .mdebug .previous .nan .gnu_attribute .globl .data .align .type .size .word .rdata .align .ascii .text .ent .frame .mask .fmask .set).
+(0.5) 2.2) Indique as modificações necessárias no código Assembly gerado para poder ser executado corretamente no Mars.
+(1.0)2.3) Compile novamente o programa sort.c e compare o número de instruções executadas e o tamanho em bytes dos códigos obtidos com os dados do item 1.1) para cada diretiva de otimização da compilação {-O0, -O1, -O2, -O3, -Os}.
+(5.0) 3) Primos Gêmeos
+Dois números naturais primos são ditos gêmeos se diferença entre eles for 2.
+Ex.: PG1=(3,5) PG2=(5,7), PG3=(11,13), PG4=(17,19), ..., PGi=(Pi,Pi+2), ..
+(1.0)3.1) Escreva um procedimento em Assembly MIPS que retorne o primeiro elemento do i-ésimo par de números primos gêmeos, int PG(int i)
+(1.0)3.2) Escreva um programa void main(void) que leia o valor de i do teclado e mostre na tela o resultado com a formatação
+printf(“Primos Gêmeos(%d)=(%d,%d)\n”,i,P[i],P[i]+2)
+(1.0)3.3) Encontre o número imax, de forma que Pimax+2 seja o maior número Primo Gêmeo representável utilizando uma palavra de 32 bits sem sinal.
+(1.0)3.4) Para o seu procedimento, determine uma equação NInstr(i) que seja capaz de estimar o número de instruções necessárias ao cálculo de Pi+2. Desenhe as curvas de NInstr(i) e do número de instruções real em um gráfico para i={1,2,3,....,100}.
+(1.0)3.5) Considerando que vamos utilizar a implementação de um processador MIPS32 com CPI de 1 e frequência de clock de 50MHz, qual o tempo esperado para o cálculo do valor de Pimax+2? Qual deveria ser a frequência deste processador para que o cálculo do Pimax+2 se realizasse em 1 minuto?
