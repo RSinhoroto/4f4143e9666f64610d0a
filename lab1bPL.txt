@@ -1,0 +1,35 @@
+module halfadd (input a, b,
+		output sum, carry);
+
+assign sum = a ^ b;
+assign carry = a & b;
+
+endmodule
+
+module fulladd (input a, b, cin,
+		output sum, cout);
+	
+inout s1, c1, c2;
+
+halfadd h1 (a, b, s1, c1);
+halfadd h2 (s1, cin, sum, c2);
+assign cout = c1 | c2;
+
+endmodule
+
+module main; //line 20
+
+	initial
+		begin
+		a = 1'b0;
+		b = 1'b1;
+		ci = 1'b1;
+		end
+	
+	
+		output s, c;
+		fulladd f1(a, b, ci, s, c);
+
+		$monitor("sum = %d, carry = %d", s, c);
+ 
+endmodule
